@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ENTITY-SYS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body>
+{% load static%}
+<nav class="bg-gray-800">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- Mobile menu button-->
+        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+          <span class="absolute -inset-0.5"></span>
+          <span class="sr-only">Open main menu</span>
+          <!--
+            Icon when menu is closed.
+
+            Menu open: "hidden", Menu closed: "block"
+          -->
+          <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+          <!--
+            Icon when menu is open.
+
+            Menu open: "block", Menu closed: "hidden"
+          -->
+          <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex flex-shrink-0 items-center">
+          <img class="h-10 w-auto" src="{% static '/Untitled.png' %}" alt="Your Company">
+        </div>
+        <div class="hidden sm:ml-6 sm:block">
+          <div class="flex space-x-4">
+            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+            <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">About Us</a>
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Why We</a>
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Academics</a>
+            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Placements</a>
+             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Faculty</a>
+          </div>
+        </div>
+      </div>
+      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+        <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+          <span class="absolute -inset-1.5"></span>
+          <span class="sr-only">View notifications</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+          </svg>
+        </button>
+        <div class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{Username}}</div>
+
+       <!-- Profile dropdown -->
+      <div class="relative ml-3">
+        <div>
+          <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            <span class="absolute -inset-1.5"></span>
+            <span class="sr-only">Open user menu</span>
+            <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+          </button>
+        </div>
+
+        <!-- Dropdown menu, show/hide based on menu state. -->
+        <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden" id="user-menu" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+          <!-- Active: "bg-gray-100", Not Active: "" -->
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+          <a href="/" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile menu, show/hide based on menu state. -->
+  <div class="sm:hidden" id="mobile-menu">
+    <div class="space-y-1 px-2 pb-3 pt-2">
+      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+      <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
+      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
+      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
+      <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="bg-gray-100 font-sans p-6">
+    <h1 class="text-3xl font-semibold mb-6">Course Subjects</h1>
+    <div class="mb-4">
+        <label for="semester" class="block text-sm font-medium text-gray-700">Select Semester:</label>
+        <div class="relative inline-block w-40">
+            <select id="semester" name="semester" class="block w-full py-2 pl-3 pr-10 mt-1 text-base bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                <option value="semester1">Semester 1</option>
+                <option value="semester2">Semester 2</option>
+                <option value="semester3">Semester 3</option>
+                <option value="semester4">Semester 4</option>
+                <option value="semester5">Semester 5</option>
+                <option value="semester6">Semester 6</option>
+                <option value="semester7">Semester 7</option>
+                <option value="semester8">Semester 8</option>
+            </select>
+        </div>
+    </div>
+    <div id="subject-list" class=" w-2/3 mt-4">
+        <!-- Subjects will be displayed here -->
+    </div>
+    <script>
+        // JSON data
+        const subjectsData = {
+
+    "semester1": [
+        {
+            "subject": "Data Structures and Algorithms",
+            "description": "This subject covers the fundamental data structures and algorithms used in computer science and programming.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Database Management Systems",
+            "description": "This subject focuses on database concepts, SQL, and database management systems.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Computer Organization and Architecture",
+            "description": "This subject covers the organization and architecture of computer systems.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Operating Systems",
+            "description": "This subject explores the principles and design of operating systems.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Software Engineering",
+            "description": "This subject focuses on software development methodologies and project management.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Web Development",
+            "description": "This subject covers web technologies and development.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        }
+    ],
+    "semester2": [
+        {
+            "subject": "Artificial Intelligence",
+            "description": "This subject explores the field of artificial intelligence and machine learning.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Computer Networks",
+            "description": "This subject covers computer network protocols and technologies.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Compiler Design",
+            "description": "This subject focuses on the theory and design of compilers.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Database Systems",
+            "description": "This subject delves deeper into database systems and management.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Software Testing and Quality Assurance",
+            "description": "This subject covers software testing methodologies and quality assurance practices.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Computer Graphics",
+            "description": "This subject explores computer graphics principles and techniques.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        }
+    ],
+    "semester3": [
+        {
+            "subject": "Mobile App Development",
+            "description": "This subject focuses on mobile app development for various platforms.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Data Science and Analytics",
+            "description": "This subject covers data analysis and data science techniques.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Computer Security and Cryptography",
+            "description": "This subject explores computer security and cryptographic techniques.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Artificial Neural Networks",
+            "description": "This subject delves into the concepts and applications of artificial neural networks.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Distributed Systems",
+            "description": "This subject covers the principles of distributed computing and systems.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Human-Computer Interaction",
+            "description": "This subject explores the principles of user interface design and human-computer interaction.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        }
+    ],
+    "semester4": [
+        {
+            "subject": "Software Project Management",
+            "description": "This subject covers project management techniques in software development.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Cloud Computing",
+            "description": "This subject explores cloud computing technologies and services.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Computer Vision",
+            "description": "This subject focuses on computer vision and image processing techniques.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Natural Language Processing",
+            "description": "This subject covers natural language processing and language understanding techniques.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Software Quality Assurance",
+            "description": "This subject delves into software quality assurance and testing strategies.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Big Data Analytics",
+            "description": "This subject explores big data analytics techniques and tools.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        }
+    ],
+    "semester5": [
+        {
+            "subject": "Machine Learning",
+            "description": "This subject covers machine learning algorithms and techniques.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Internet of Things (IoT)",
+            "description": "This subject focuses on IoT technologies and applications.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Blockchain Technology",
+            "description": "This subject explores blockchain technology and its applications.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Advanced Database Systems",
+            "description": "This subject covers advanced topics in database systems and management.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Network Security",
+            "description": "This subject focuses on network security and cybersecurity techniques.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Artificial Intelligence in Robotics",
+            "description": "This subject explores the application of AI in robotics and automation.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        }
+    ],
+    "semester6": [
+        {
+            "subject": "Parallel and Distributed Computing",
+            "description": "This subject covers parallel and distributed computing systems.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Cloud Security and Privacy",
+            "description": "This subject explores security and privacy issues in cloud computing.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Information Retrieval",
+            "description": "This subject covers information retrieval and search engine techniques.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Machine Learning for Natural Language Processing",
+            "description": "This subject explores machine learning techniques for NLP applications.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Data Mining and Warehousing",
+            "description": "This subject covers data mining and data warehousing concepts.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Software Development for Embedded Systems",
+            "description": "This subject focuses on software development for embedded and IoT devices.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        }
+    ],
+    "semester7": [
+        {
+            "subject": "Cybersecurity and Ethical Hacking",
+            "description": "This subject covers cybersecurity and ethical hacking techniques.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Advanced Machine Learning",
+            "description": "This subject delves into advanced machine learning topics and applications.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Computer Vision and Image Processing",
+            "description": "This subject explores computer vision and image processing applications.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Blockchain and Cryptocurrency",
+            "description": "This subject focuses on blockchain technology and cryptocurrency systems.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "AI in Healthcare",
+            "description": "This subject covers the application of AI in healthcare and medical informatics.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        },
+        {
+            "subject": "Digital Marketing and E-Commerce",
+            "description": "This subject explores digital marketing and e-commerce strategies.",
+            "curriculumLink": "{%static '/Syllabus_SVIIT_CSE_7.pdf'  %}"
+        }
+    ],
+    "semester8": [
+        {
+            "subject": "Internship",
+            "description": "This semester includes an internship where students gain practical experience in a real-world setting.",
+            "curriculumLink": "internship-link.html"
+        },
+        {
+            "subject": "Industrial Training",
+            "description": "Students undergo industrial training to gain insights into industry practices.",
+            "curriculumLink": "industrial-training-link.html"
+        },
+        {
+            "subject": "Capstone Project",
+            "description": "This project allows students to apply their knowledge and skills to a real project.",
+            "curriculumLink": "capstone-project-link.html"
+        }
+    ]
+
+        };
+
+        // Function to update the displayed subjects based on the selected semester
+        function updateSubjects(semester) {
+            const subjectList = document.getElementById("subject-list");
+            const semesterData = subjectsData[semester];
+            let subjectHTML = "";
+
+            if (semesterData) {
+                semesterData.forEach((subject, index) => {
+                    subjectHTML += `
+                        <div class="mb-4 p-4 bg-white border border-gray-200 rounded-lg shadow">
+                            <h2 class="text-lg font-semibold">${index + 1}. ${subject.subject}</h2>
+                            <p class="text-sm text-gray-600">${subject.description}</p>
+                            <a href="${subject.curriculumLink}" class="text-blue-500 hover:underline">Curriculum Link</a>
+                        </div>
+                    `;
+                });
+            } else {
+                subjectHTML = "<p class='text-gray-600'>No subjects found for the selected semester.</p>";
+            }
+
+            subjectList.innerHTML = subjectHTML;
+        }
+
+        // Initial call to populate subjects for the default selected semester
+        const semesterSelect = document.getElementById("semester");
+        updateSubjects(semesterSelect.value);
+
+        // Event listener to update subjects when the semester is changed
+        semesterSelect.addEventListener("change", (event) => {
+            updateSubjects(event.target.value);
+        });
+    </script>
+</div>
+
+
+
+
+
+<script>
+  document.getElementById("user-menu-button").addEventListener("click", function() {
+    var userMenu = document.getElementById("user-menu");
+    userMenu.classList.toggle("hidden");
+  });
+</script>
+</script>
+</body>
+</html>
